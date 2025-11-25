@@ -472,18 +472,18 @@ time_greedy <- system.time({
 cat("Optimal matching:\n")
 #> Optimal matching:
 cat("  Time:", round(time_optimal["elapsed"], 3), "seconds\n")
-#>   Time: 51.606 seconds
+#>   Time: 51.453 seconds
 cat("  Mean distance:", round(mean(result_optimal$pairs$distance), 4), "\n\n")
 #>   Mean distance: 0.3368
 
 cat("Greedy matching:\n")
 #> Greedy matching:
 cat("  Time:", round(time_greedy["elapsed"], 3), "seconds\n")
-#>   Time: 1.941 seconds
+#>   Time: 1.986 seconds
 cat("  Mean distance:", round(mean(result_greedy$pairs$distance), 4), "\n")
 #>   Mean distance: 0.4667
 cat("  Speedup:", round(time_optimal["elapsed"] / time_greedy["elapsed"], 1), "x\n")
-#>   Speedup: 26.6 x
+#>   Speedup: 25.9 x
 ```
 
 ### Greedy Strategies
@@ -566,9 +566,9 @@ comparison <- do.call(rbind, lapply(names(results), function(s) {
 
 print(comparison)
 #>          strategy time_sec mean_distance total_distance
-#> elapsed    sorted    0.081        0.0912          18.24
-#> elapsed1 row_best    0.075        0.0968          19.36
-#> elapsed2       pq    0.083        0.0912          18.24
+#> elapsed    sorted    0.082        0.0912          18.24
+#> elapsed1 row_best    0.077        0.0968          19.36
+#> elapsed2       pq    0.084        0.0912          18.24
 ```
 
 **Recommendation:**
@@ -1471,19 +1471,9 @@ training evaluation example:
 
 **Recommended Workflow**:
 
-    1. Explore data → Identify confounders
-                          ↓
-    2. First match   → match_couples(vars, auto_scale = TRUE)
-                          ↓
-    3. Check balance → balance_diagnostics()
-                          ↓
-           ┌──────────────┴──────────────┐
-        Balance OK                   Balance poor
-           ↓                              ↓
-    4. Estimate effect             Refine: caliper, blocking,
-                                   more variables
-                                          ↓
-                                   Return to step 3
+![Flowchart showing recommended matching workflow with iterative
+refinement
+loop](matching-workflows_files/figure-html/workflow-diagram-1.png)
 
 **What’s Next?**
 
