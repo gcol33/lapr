@@ -334,7 +334,7 @@ system.time({
   result <- lap_solve(large_cost, method = "jv")
 })
 #>    user  system elapsed 
-#>   0.001   0.000   0.002
+#>   0.002   0.000   0.002
 
 cat("Total cost:", get_total_cost(result), "\n")
 #> Total cost: 149.0911
@@ -528,7 +528,7 @@ system.time({
   result_gs <- lap_solve(cost, method = "auction_gs")
 })
 #>    user  system elapsed 
-#>   0.002   0.000   0.002
+#>   0.001   0.000   0.001
 
 cat("Total cost:", get_total_cost(result_gs), "\n")
 #> Total cost: 204.2516
@@ -587,7 +587,7 @@ times <- c(
 
 print(times)
 #>     standard.elapsed       scaled.elapsed gauss_seidel.elapsed 
-#>                0.007                0.003                0.006
+#>                0.008                0.003                0.006
 ```
 
 **Numerical Stability**:
@@ -710,7 +710,7 @@ system.time({
   result <- lap_solve(binary_cost, method = "hk01")
 })
 #>    user  system elapsed 
-#>   0.003   0.002   0.005
+#>   0.004   0.001   0.005
 
 cat("Total cost:", get_total_cost(result), "\n")
 #> Total cost: 0
